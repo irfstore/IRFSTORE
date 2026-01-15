@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ＩＲＦＳＴＯＲＥ    ＩＤＮ</title>
+    <style>
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Variabel Gradien & Warna */
+        :root {
+            --gradien-utama: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --gradien-header: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%);
+            --gradien-menu: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            --gradien-footer: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            --gradien-popup: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+            --warna-teks-putih: #ffffff;
+            --warna-teks-abu: #94a3b8;
+        }
+
+        /* Body dengan Watermark */
+        body {
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 100px;
+            overflow-x: hidden;
+            background-color: #f8fafc;
+        }
+
+        /* Watermark Gradien Transparan */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 9rem;
+            font-weight: 900;
+            background: var(--gradien-utama);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header dengan Navigasi */
+        header {
+            background: var(--gradien-header);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 998;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            color: var(--warna-teks-putih);
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .header-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-link {
+            color: var(--warna-teks-putih);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-link:hover {
+            color: #fce7f3;
+        }
+
+        /* Responsif Header untuk HP */
+        @media (max-width: 576px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .watermark {
+                font-size: 5rem;
+            }
+        }
+
+        /* Satu Kotak Menu Klikabel */
+        .menu-container {
+            max-width: 650px;
+            margin: 5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gradien Pada Sisi Kanan Kartu */
+        .menu-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradien-menu);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .menu-icon {
+            font-size: 5rem;
+            margin-bottom: 1.8rem;
+            background: var(--gradien-utama);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .menu-title {
+            font-size: 1.9rem;
+            color: #0f172a;
+            margin-bottom: 1.2rem;
+        }
+
+        .menu-desc {
+            color: var(--warna-teks-abu);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Pop-up Otomatis */
+        .auto-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .popup-content {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .popup-header {
+            background: var(--gradien-popup);
+            padding: 1.5rem;
+            color: var(--warna-teks-putih);
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            color: var(--warna-teks-putih);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-popup:hover {
+            color: #fffbeb;
+        }
+
+        .popup-body {
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .popup-icon {
+            font-size: 4rem;
+            background: var(--gradien-utama);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .popup-text {
+            color: var(--warna-teks-abu);
+            line-height: 1.6;
+            margin-bottom: 1.8rem;
+        }
+
+        .popup-button {
+            padding: 1rem 2.2rem;
+            background: var(--gradien-utama);
+            border: none;
+            border-radius: 10px;
+            color: var(--warna-teks-putih);
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .popup-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: var(--gradien-footer);
+            color: var(--warna-teks-putih);
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .footer-link {
+            color: #fce7f3;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Watermark -->
+    <div class="watermark">ＩＲＦＳＴＯＲＥ    ＩＤＮ</div>
+
+    <!-- Header dengan Navigasi -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="header-logo">ＩＲＦＳＴＯＲＥ    ＩＤＮ</a>
+            <div class="header-menu">
+               
+                <a href="produk.html" class="header-link">Produk</a>
+                <a href="about.html" class="header-link">Tentang Kami</a>
+                <a href="chat.html" class="header-link">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pop-up Otomatis -->
+    <div class="auto-popup" id="main-popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <div class="popup-header">SELAMAT DATANG!</div>
+            <div class="popup-body">
+                <div class="popup-icon">✨</div>
+                <h3 class="popup-title"> ＩＲＦＳＴＯＲＥ    ＩＤＮ</h3>
+                <p class="popup-text">Proses Cepat, Aman, Dan Berkualitas Tinggi Dengan Pelayan Yang Terbaik</p>
+                <button class="popup-button" id="popup-action">LANJUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Satu Kotak Menu Klikabel -->
+    <div class="menu-container">
+        <div class="menu-card" id="single-menu">
+            <div class="menu-icon">📦</div>
+            <h3 class="menu-title">ＩＲＦＳＴＯＲＥ ＩＤＮ</h3>
+            <p class="menu-desc">Kami Akan Terus Berusaha Untuk Bisa Memberikan Pelayanan terbaik Bagi Pelanggan Kami, Dan Akan Terus Memenuhi Kebutuhan  Anda, Dan Cek Juga Keaslian Kami Kembali! Di luar itu kami Tidak Bertanggung Jawab Jika Terjadi Penipuan Mengatasnamakan Kami, Harap Cek Ke aslian Kami Di Website ini.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">&copy; Copyright | ＩＲＦＳＴＯＲＥ ＩＤＮ | 2026</p>
+        <p class="footer-text"> <a href="chat.html" class="footer-link">Hubungi Kami</a></p>
+        <p class="footer-text"><a href="kebijakan.html" class="footer-link">Kebijakan Privasi</a> | <a href="syarat.html" class="footer-link">Syarat & Ketentuan</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Elemen Utama
+        const popup = document.getElementById('main-popup');
+        const closePopupBtn = document.querySelector('.close-popup');
+        const popupActionBtn = document.getElementById('popup-action');
+        const singleMenuCard = document.getElementById('single-menu');
+        const headerLinks = document.querySelectorAll('.header-link');
+
+        // Pop-up muncul setelah 3 detik
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                popup.style.display = 'flex';
+            }, 3000);
+        });
+
+        // Tutup pop-up (klik X)
+        closePopupBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        // Tutup pop-up (klik area luar)
+        window.addEventListener('click', (e) => {
+            if (e.target === popup) popup.style.display = 'none';
+        });
+
+        // Aksi tombol pop-up (arahkan ke halaman paket)
+        popupActionBtn.addEventListener('click', () => {
+            
+            popup.style.display = 'none';
+            window.location.href = 'produk.html'; // Ganti dengan link Anda
+        });
+
+        // Aksi klik kotak menu (arahkan ke halaman paket layanan)
+        singleMenuCard.addEventListener('click', () => {
+            
+            window.location.href = 'produk.html'; // Ganti dengan link Anda
+        });
+
+        // Konfirmasi navigasi untuk link tertentu
+        headerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const target = link.getAttribute('href').replace('.html', '').toUpperCase();
+                if (target === 'KONTAK' || target === 'TENTANG KAMI') {
+                    const konfirm = confirm(`Apakah Anda ingin pergi ke halaman ${target}?`);
+                    if (!konfirm) e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Produk - ＩＲＦＳＴＯＲＥ    ＩＤＮ</title>
+    <style>
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Variabel Warna & Gradien */
+        :root {
+            --gradien-utama: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --gradien-kartu: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            --warna-utama: #3b82f6;
+            --warna-teks: #1e293b;
+            --warna-teks-ringan: #64748b;
+            --warna-latar: #f8fafc;
+        }
+
+        /* Body */
+        body {
+            background-color: var(--warna-latar);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        /* Header Halaman */
+        .page-header {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--gradien-utama);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        /* Container Grid Produk */
+        .produk-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Kartu Produk */
+        .produk-card {
+            background: var(--gradien-kartu);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .produk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        /* Badge Diskon */
+        .diskon-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #ef4444;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Gambar Produk */
+        .produk-gambar {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--warna-utama);
+        }
+
+        /* Detail Produk */
+        .produk-detail {
+            padding: 1.5rem;
+        }
+
+        .produk-nama {
+            font-size: 1.2rem;
+            color: var(--warna-teks);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .produk-deskripsi {
+            font-size: 0.95rem;
+            color: var(--warna-teks-ringan);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .produk-harga {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .harga-asli {
+            font-size: 0.9rem;
+            color: var(--warna-teks-ringan);
+            text-decoration: line-through;
+        }
+
+        .harga-diskon {
+            font-size: 1.3rem;
+            color: var(--warna-utama);
+            font-weight: bold;
+        }
+
+        /* Tombol Beli */
+        .tombol-beli {
+            display: block;
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--gradien-utama);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .tombol-beli:hover {
+            transform: scale(1.02);
+        }
+
+        /* Footer Halaman */
+        .page-footer {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--warna-teks-ringan);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsif untuk HP Kecil */
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.6rem;
+            }
+            .produk-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Halaman -->
+    <header class="page-header">
+        <h1 class="page-title">LAYANAN DIGITAL</h1>
+        <p class="page-subtitle">Pilih produk yang dibutuhkan dengan kualitas premium dan harga terjangkau. Nikmati pelayanan terbaik kami dengan proses cepat dan tepat!</p>
+    </header>
+
+    <!-- Grid Produk -->
+    <div class="produk-grid">
+        <!-- Produk 1 -->
+        <div class="produk-card">
+            
+            <img src="dana.jpg" alt="Laptop Pro" class="produk-gambar">
+            <div class="produk-detail">
+                <h3 class="produk-nama">E-WALLET</h3>
+                <p class="produk-deskripsi">KYC SERVICE OR READYMADE ALL E-WALLET</p>
+                <div class="produk-harga">
+                   
+                </div>
+                <a href="detail-produk1.html" class="tombol-beli">Detail</a>
+            </div>
+        </div>
+
+        <!-- Produk 2 -->
+        <div class="produk-card">
+            
+            <img src="dana(copy).jpg" alt="Smartphone X" class="produk-gambar">
+            <div class="produk-detail">
+                <h3 class="produk-nama">ACCOUNT BANK INDONESIA</h3>
+                <p class="produk-deskripsi">KYC SERVICE BANK INDONESIA/VERIFICATION ACCOUNT BANK</p>
+                <div class="produk-harga">
+                    
+                </div>
+                <a href="detail-produk2.html" class="tombol-beli">Detail</a>
+            </div>
+        </div>
+
+        <!-- Produk 3 -->
+        <div class="produk-card">
+            <img src="qris.png" alt="Headset Wireless" class="produk-gambar">
+            <div class="produk-detail">
+                <h3 class="produk-nama">QRIS ALL PAYMENT</h3>
+                <p class="produk-deskripsi">KYC SERVICE OR READYMADE FOR QRIS</p>
+                <div class="produk-harga">
+                    
+                </div>
+                <a href="detail-produk3.html" class="tombol-beli">Detail</a>
+            </div>
+        </div>
+
+        <!-- Produk 4 -->
+        <div class="produk-card">
+            
+            <img src="panel.jpg" alt="Tablet Pro" class="produk-gambar">
+            <div class="produk-detail">
+                <h3 class="produk-nama"> PANEL PTERODACTYL</h3>
+                <p class="produk-deskripsi">UNTUK KEBUTUHAN BOT WHATSAPP</p>
+                <div class="produk-harga">
+                  
+                </div>
+                <a href="detail-produk4.html" class="tombol-beli">Lihat Detail & Beli</a>
+            </div>
+        </div>
+
+        <!-- Produk 5 -->
+        <div class="produk-card">
+            <img src="wa.png" alt="Smart Watch" class="produk-gambar">
+            <div class="produk-detail">
+                <h3 class="produk-nama">KEBUTUHAN WHATSAPP</h3>
+                <p class="produk-deskripsi">READY BOT JAGA GRUP, JASHARE, BOT BUG DAN LAIN-LAIN</p>
+                <div class="produk-harga">
+                    
+                </div>
+                <a href="detail-produk5.html" class="tombol-beli">Lihat Detail & Beli</a>
+            </div>
+        </div>
+
+        <!-- Produk 6 -->
+        
+        
+    </div>
+
+    <!-- Footer Halaman -->
+    <footer class="page-footer">
+        <p> 2026 | COPRYRIGHT</p>
+        <p>&copy; ＩＲＦＳＴＯＲＥ    ＩＤＮ</p>
+    </footer>
+
+    <!-- JavaScript untuk Efek Tambahan -->
+    <script>
+        // Tambah pesan konfirmasi saat klik tombol beli
+        const tombolBeli = document.querySelectorAll('.tombol-beli');
+        tombolBeli.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const produkNama = btn.parentElement.querySelector('.produk-nama').textContent;
+                const konfirmasi = confirm(`Apakah Anda ingin melihat detail produk: ${produkNama}?`);
+                if (!konfirmasi) e.preventDefault();
+            });
+        });
+
+        // Efek muncul perlahan saat halaman dimuat
+        window.addEventListener('load', () => {
+            const produkCards = document.querySelectorAll('.produk-card');
+            produkCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>

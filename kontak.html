@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Customer Service - Brand Kamu</title>
+    <style>
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Variabel Gradien & Warna */
+        :root {
+            --gradien-utama: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --gradien-kartu: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            --warna-utama: #3b82f6;
+            --warna-teks: #1e293b;
+            --warna-teks-ringan: #64748b;
+        }
+
+        /* Body & Background */
+        body {
+            min-height: 100vh;
+            background-color: #f8fafc;
+            padding: 2rem 1rem;
+        }
+
+        /* Header Halaman */
+        .page-header {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--gradien-utama);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        /* Container Daftar CS */
+        .cs-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Kartu CS */
+        .cs-card {
+            background: var(--gradien-kartu);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--warna-utama);
+        }
+
+        .cs-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .cs-foto {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.2rem;
+            border: 4px solid white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .cs-nama {
+            font-size: 1.3rem;
+            color: var(--warna-teks);
+            margin-bottom: 0.5rem;
+        }
+
+        .cs-jabatan {
+            font-size: 0.95rem;
+            color: var(--warna-utama);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .cs-spesialis {
+            font-size: 0.9rem;
+            color: var(--warna-teks-ringan);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tombol Kontak */
+        .kontak-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem 0.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+
+        .kontak-wa {
+            background-color: #25d366;
+        }
+
+        .kontak-telp {
+            background-color: #3b82f6;
+        }
+
+        .kontak-email {
+            background-color: #ec4899;
+        }
+
+        .kontak-button img {
+            width: 18px;
+            margin-right: 0.6rem;
+        }
+
+        .kontak-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer Halaman */
+        .page-footer {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--warna-teks-ringan);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsif untuk HP Kecil */
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .cs-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Halaman -->
+    <header class="page-header">
+        <h1 class="page-title">DAFTAR CUSTOMER SERVICE</h1>
+        <p class="page-subtitle">Hubungi kami untuk bantuan produk, pemesanan, atau keluhan. Tim CS siap membantu Anda!</p>
+    </header>
+
+    <!-- Daftar Customer Service -->
+    <div class="cs-container">
+        <!-- CS 1 -->
+        <div class="cs-card">
+            <img src="https://via.placeholder.com/120x120?text=Anna" alt="Foto Anna" class="cs-foto">
+            <h3 class="cs-nama">Anna Wijaya</h3>
+            <p class="cs-jabatan">CS Spesialis Produk</p>
+            <p class="cs-spesialis">Spesialis dalam pertanyaan produk elektronik dan aksesoris</p>
+            <a href="https://wa.me/6281234567890?text=Halo%20Anna%2C%20saya%20perlu%20bantuan%20tentang%20produk" class="kontak-button kontak-wa" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+                WhatsApp
+            </a>
+            <a href="tel:+6281234567890" class="kontak-button kontak-telp" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Viber_icon_%282018%29.svg/1200px-Viber_icon_%282018%29.svg.png" alt="Telp">
+                Telepon
+            </a>
+        </div>
+
+        <!-- CS 2 -->
+        <div class="cs-card">
+            <img src="https://via.placeholder.com/120x120?text=Budi" alt="Foto Budi" class="cs-foto">
+            <h3 class="cs-nama">Budi Santoso</h3>
+            <p class="cs-jabatan">CS Spesialis Pemesanan</p>
+            <p class="cs-spesialis">Spesialis dalam proses pemesanan, pembayaran, dan pengiriman</p>
+            <a href="https://wa.me/6281298765432?text=Halo%20Budi%2C%20saya%20perlu%20bantuan%20tentang%20pemesanan" class="kontak-button kontak-wa" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+                WhatsApp
+            </a>
+            <a href="mailto:budi.santoso@brandkamu.id" class="kontak-button kontak-email" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Email">
+                Email
+            </a>
+        </div>
+
+        <!-- CS 3 -->
+        <div class="cs-card">
+            <img src="https://via.placeholder.com/120x120?text=Citra" alt="Foto Citra" class="cs-foto">
+            <h3 class="cs-nama">Citra Lestari</h3>
+            <p class="cs-jabatan">CS Spesialis Keluhan</p>
+            <p class="cs-spesialis">Spesialis dalam menangani keluhan, retur, dan garansi produk</p>
+            <a href="https://wa.me/6281312345678?text=Halo%20Citra%2C%20saya%20perlu%20bantuan%20tentang%20keluhan" class="kontak-button kontak-wa" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+                WhatsApp
+            </a>
+            <a href="tel:+6281312345678" class="kontak-button kontak-telp" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Viber_icon_%282018%29.svg/1200px-Viber_icon_%282018%29.svg.png" alt="Telp">
+                Telepon
+            </a>
+        </div>
+
+        <!-- CS 4 -->
+        <div class="cs-card">
+            <img src="https://via.placeholder.com/120x120?text=Dedi" alt="Foto Dedi" class="cs-foto">
+            <h3 class="cs-nama">Dedi Permana</h3>
+            <p class="cs-jabatan">CS Spesialis Bisnis</p>
+            <p class="cs-spesialis">Spesialis dalam pertanyaan kerjasama dan pembelian grosir</p>
+            <a href="https://wa.me/6281387654321?text=Halo%20Dedi%2C%20saya%20perlu%20bantuan%20tentang%20kerjasama" class="kontak-button kontak-wa" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+                WhatsApp
+            </a>
+            <a href="mailto:dedi.permana@brandkamu.id" class="kontak-button kontak-email" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Email">
+                Email
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer Halaman -->
+    <footer class="page-footer">
+        <p>Jam Layanan: Senin - Sabtu, 08.00 WIB - 18.00 WIB</p>
+        <p>&copy; 2026 Brand Kamu Digital. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <!-- JavaScript untuk Efek Tambahan -->
+    <script>
+        // Tambah pesan konfirmasi saat klik tombol telepon
+        const telpButtons = document.querySelectorAll('.kontak-telp');
+        telpButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const nomor = btn.getAttribute('href').replace('tel:+', '');
+                const konfirmasi = confirm(`Apakah Anda yakin ingin menghubungi nomor ${nomor}?`);
+                if (!konfirmasi) e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Brand Kamu</title>
+    <style>
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Variabel Warna & Gradien */
+        :root {
+            --gradien-utama: linear-gradient(180deg, #2d3748 0%, #4a5568 100%);
+            --gradien-tombol: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            --warna-utama: #4299e1;
+            --warna-teks-gelap: #1a202c;
+            --warna-teks-sedang: #4a5568;
+            --warna-teks-ringan: #718096;
+            --warna-latar: #f7fafc;
+            --warna-putih: #ffffff;
+        }
+
+        /* Font Inter dari Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: transparent;
+            padding: 1.5rem 2rem;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+            z-index: 999;
+        }
+
+        .navbar-scrolled {
+            background-color: var(--warna-putih);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            color: var(--warna-putih);
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-scrolled .navbar-logo {
+            color: var(--warna-utama);
+        }
+
+        .navbar-menu a {
+            color: var(--warna-putih);
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-scrolled .navbar-menu a {
+            color: var(--warna-teks-gelap);
+        }
+
+        .navbar-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--warna-utama);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-menu a:hover::after,
+        .navbar-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: var(--gradien-utama);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--warna-putih);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .btn-scroll {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            border: 2px solid var(--warna-putih);
+            color: var(--warna-putih);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-scroll:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        /* Konten Utama */
+        .main-content {
+            max-width: 1100px;
+            margin: 8rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Tentang Kami Section */
+        .tentang-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            margin-bottom: 8rem;
+            align-items: center;
+        }
+
+        .tentang-foto {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--warna-utama);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--warna-teks-gelap);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            color: var(--warna-teks-sedang);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .btn-detail {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: var(--gradien-tombol);
+            color: var(--warna-putih);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-detail:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Nilai Kami Section */
+        .nilai-section {
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+
+        .nilai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .nilai-card {
+            padding: 2.5rem;
+            background-color: var(--warna-putih);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nilai-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .nilai-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(66, 153, 225, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--warna-utama);
+            font-size: 1.8rem;
+        }
+
+        .nilai-title {
+            font-size: 1.2rem;
+            color: var(--warna-teks-gelap);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .nilai-text {
+            color: var(--warna-teks-ringan);
+            line-height: 1.7;
+        }
+
+        /* Testimoni Section */
+        .testimoni-section {
+            background-color: var(--warna-latar);
+            padding: 6rem 2rem;
+            margin: 0 -2rem;
+            text-align: center;
+        }
+
+        .testimoni-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimoni-slide {
+            display: none;
+            padding: 2rem;
+        }
+
+        .testimoni-slide.active {
+            display: block;
+            animation: fade 0.8s ease;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .testimoni-quot {
+            font-size: 3rem;
+            color: var(--warna-utama);
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .testimoni-text {
+            font-size: 1.1rem;
+            color: var(--warna-teks-sedang);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimoni-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .testimoni-foto {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimoni-nama {
+            font-size: 1rem;
+            color: var(--warna-teks-gelap);
+            font-weight: 600;
+        }
+
+        .testimoni-perusahaan {
+            font-size: 0.9rem;
+            color: var(--warna-utama);
+        }
+
+        .testimoni-nav {
+            margin-top: 2rem;
+        }
+
+        .testimoni-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #cbd5e0;
+            border: none;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .testimoni-dot.active {
+            background-color: var(--warna-utama);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--warna-teks-gelap);
+            color: var(--warna-putih);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .navbar-menu {
+                display: none;
+            }
+
+            .tentang-section {
+                grid-template-columns: 1fr;
+            }
+
+            .tentang-foto {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">IRFSTORE IDN</a>
+            <div class="navbar-menu">
+                <a href="index.html">Beranda</a>
+                <a href="produk.html">Produk</a>
+                <a href="tentang.html" class="active">Tentang Kami</a>
+                <a href="kontak.html">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Kami Membuat Impian Bisnis Anda Jadi Nyata</h1>
+            <p class="hero-desc">
+                Dengan pengalaman lebih dari 8 tahun, kami berkomitmen untuk memberikan solusi terbaik yang menginspirasi dan memberikan dampak positif bagi pelanggan kami.
+            </p>
+            <button class="btn-scroll" id="btnScroll">
+                <i>&#8595;</i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Konten Utama -->
+    <main class="main-content">
+        <!-- Tentang Kami -->
+        <section class="tentang-section" id="tentang">
+            <div class="tentang-foto-wrapper">
+                <img src="https://via.placeholder.com/600x400?text=Kantor+Kami" alt="Kantor Kami" class="tentang-foto">
+            </div>
+            <div class="tentang-text">
+                
+                <p class="section-text">
+                    Seiring waktu, kami tumbuh menjadi tim yang terdiri dari profesional ahli di bidangnya, dengan fokus pada pengembangan produk berkualitas tinggi dan layanan pelanggan yang luar biasa.
+                </p>
+                <p class="section-text">
+                    Kami percaya bahwa setiap bisnis memiliki potensi untuk berkembang, dan kami siap membantu mereka mewujudkannya melalui teknologi yang tepat.
+                </p>
+                <a href="#nilai" class="btn-detail">Lihat Nilai Kami</a>
+            </div>
+        </section>
+
+        <!-- Nilai Kami -->
+        <section class="nilai-section" id="nilai">
+            <p class="section-subtitle">Apa yang Kami Percayai</p>
+            <h2 class="section-title">Nilai Inti Kami</h2>
+            <div class="nilai-grid">
+                <div class="nilai-card">
+                    <div class="nilai-icon">
+                        <i>&#128187;</i>
+                    </div>
+                    <h3 class="nilai-title">Inovasi</h3>
+                    <p class="nilai-text">Kami selalu mencari cara baru untuk meningkatkan produk dan layanan kami, serta menghadapi tantangan dengan pemikiran kreatif.</p>
+                </div>
+                <div class="nilai-card">
+                    <div class="nilai-icon">
+                        <i>&#128204;</i>
+                    </div>
+                    <h3 class="nilai-title">Kualitas</h3>
+                    <p class="nilai-text">Setiap detail produk dan layanan kami dibuat dengan standar tinggi untuk memastikan kepuasan dan keandalan bagi pelanggan.</p>
+                </div>
+                <div class="nilai-card">
+                    <div class="nilai-icon">
+                        <i>&#128101;</i>
+                    </div>
+                    <h3 class="nilai-title">Kolaborasi</h3>
+                    <p class="nilai-text">Kami bekerja sama dengan pelanggan dan mitra untuk menciptakan solusi yang sesuai dengan kebutuhan dan tujuan bersama.</p>
+                </div>
+                <div class="nilai-card">
+                    <div class="nilai-icon">
+                        <i>&#128504;</i>
+                    </div>
+                    <h3 class="nilai-title">Keberlanjutan</h3>
+                    <p class="nilai-text">Kami mengutamakan praktik bisnis yang bertanggung jawab dan memberikan dampak positif bagi masyarakat dan lingkungan.</p>
+                </div>
+            </div>
+       
